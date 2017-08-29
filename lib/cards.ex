@@ -5,7 +5,7 @@ defmodule Cards do
     suits = ["Spades", "Clubs", "Hearts", "Diamonds"]
 
 
-    # Nested comperhantions
+    # Nested comprehension
     # Get all lists into one list
     # Solution 1 - Flattens the given list of nested lists, many lists moved into one list
 
@@ -16,11 +16,12 @@ defmodule Cards do
     #end        
     #List.flatten(cards)
 
-      # Solution 2 - Passing both lists on the same comprehension 
+      # Solution 2 - Passing both lists on the same comprehension, loop? 
 
       for suit <- suits, value <- values do
         "#{value} of #{suit}"
       end
+
   end
 
   def shuffle(deck) do
@@ -29,6 +30,10 @@ defmodule Cards do
 
   def contains?(deck, card) do
     Enum.member?(deck, card)
+  end
+
+  def deal(deck, hand_size) do
+    Enum.split(deck, hand_size)
   end
 
 end
