@@ -32,8 +32,18 @@ defmodule Cards do
     Enum.member?(deck, card)
   end
 
+
+
   def deal(deck, hand_size) do
     Enum.split(deck, hand_size)
-  end
+      # Returns a tuple, first element list of cards in hand second element remaining cards in deck
+      # Patern matthing used for variable assignement - [color1, color2] = ["red", blue] result = color1 = "red", color2 = "blue"
+    end
+
+    # Save method
+    def save(deck, filename) do
+      binary = :erlang.term_to_binary(deck)
+      File.write(filename, binary)
+    end
 
 end
