@@ -40,10 +40,20 @@ defmodule Cards do
       # Patern matthing used for variable assignement - [color1, color2] = ["red", blue] result = color1 = "red", color2 = "blue"
     end
 
-    # Save method
+    # Save method, turn a list of strings into binary object
     def save(deck, filename) do
       binary = :erlang.term_to_binary(deck)
       File.write(filename, binary)
+    end
+
+    def load(filename) do
+      {status, binary} = File.read(filename)
+      
+      case status do        
+      :ok -> :erlang.binary_to_term binary
+      :error -> "That file doesn't exist"  
+      end
+
     end
 
 end
